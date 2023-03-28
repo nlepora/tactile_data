@@ -1,0 +1,1 @@
+{"pose_label_names": ["x", "y", "z", "Rx", "Ry", "Rz"], "target_label_names": ["x", "z", "Rx", "Ry", "Rz"], "pose_llims": [-5.0, 0.0, 1.0, -20.0, -20.0, -180.0], "pose_ulims": [5.0, 0.0, 5.0, 20.0, 20.0, 180.0], "num_iterations": 200, "utils_plotshow_plot": true, "show_slider": false}

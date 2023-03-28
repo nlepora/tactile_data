@@ -1,0 +1,1 @@
+{"robot": "sim", "arm_type": "ur5", "stim_name": "circle", "stim_pose": [600, 0, 0, 0, 0, 0], "work_frame": [650.0, 0.0, 133.0, -180.0, 0.0, 0.0], "tcp_pose": [0, 0, 0, 0, 0, 0], "num_iterations": 200, "model_type": "simple_cnn", "speed": 20}

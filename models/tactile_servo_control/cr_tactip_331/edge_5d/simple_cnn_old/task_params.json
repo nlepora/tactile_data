@@ -1,0 +1,1 @@
+{"target_label_names": ["x", "z", "Rx", "Ry", "Rz"], "pose_llims": [-5.0, 0.0, 1.0, -20.0, -20.0, -180.0], "pose_ulims": [5.0, 0.0, 5.0, 20.0, 20.0, 180.0], "pose_label_names": ["x", "y", "z", "Rx", "Ry", "Rz"], "pos_label_names": ["x", "y", "z"], "rot_label_names": ["Rx", "Ry", "Rz"]}
