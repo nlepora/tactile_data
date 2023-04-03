@@ -1,1 +1,1 @@
-{"robot": "cr", "stim_name": "circle", "speed": 20, "work_frame": [20.0, -475.0, 66.5, -180.0, 0.0, 90.0], "tcp_pose": [0, 0, -100, 0, 0, 0], "num_iterations": 200, "model_type": "posenet_cnn"}
+{"robot": "cr", "stim_name": "circle", "speed": 20, "work_frame": [20.0, -475.0, 96.5, -180.0, 0.0, 90.0], "tcp_pose": [0, 0, -70, 0, 0, 0], "model_type": "simple_cnn"}
