@@ -1,5 +1,4 @@
 import os
-import numpy as np
 
 BASE_PATH = os.path.dirname(__file__)
 
