@@ -7,6 +7,11 @@ __pycache__/
 *.zip
 tensorboard_runs/
 images/
+final*
+pix2pix_128/
+pix2pix_128*/
+*_test*
+*_test*/
 
 # C extensions
 *.so
