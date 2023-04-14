@@ -8,10 +8,12 @@ __pycache__/
 tensorboard_runs/
 images/
 final*
-pix2pix_128/
 pix2pix_128*/
 *_test*
 *_test*/
+*_temp*
+*_temp*/
+temp/
 
 # C extensions
 *.so
