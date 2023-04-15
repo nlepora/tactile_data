@@ -1,4 +1,4 @@
-sensor_image,object_label,pose_1,pose_2,pose_3,pose_4,pose_5,pose_6,shear_1,shear_2,shear_3,shear_4,shear_5,shear_6
+sensor_image,object_label,pose_x,pose_y,pose_z,pose_Rx,pose_Ry,pose_Rz,shear_x,shear_y,shear_z,shear_Rx,shear_Ry,shear_Rz
 frame_0_0.png,edge,1.340355668,0,3.442304477,0,0,-44.92472978,0.047044612,-3.257469253,0,-1.250797805,-4.700729107,-1.44443974
 frame_1_0.png,edge,-4.713515557,0,2.215185704,0,0,-44.87720313,-4.811306548,-2.164299823,0,4.213503615,0.559385126,2.865658088
 frame_2_0.png,edge,2.914248881,0,3.223307325,0,0,-44.84513449,2.955824985,4.209685292,0,4.396343039,3.318769132,2.970953056
