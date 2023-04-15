@@ -1,1 +1,0 @@
-{"pose_label_names": ["x", "y", "z", "Rx", "Ry", "Rz"], "pose_llims": [0, 0, 1, -25, -25, 0], "pose_ulims": [0, 0, 5, 25, 25, 0], "shear_label_names": ["dx", "dy", "dz", "dRx", "dRy", "dRz"], "shear_llims": [0, 0, 0, 0, 0, 0], "shear_ulims": [0, 0, 0, 0, 0, 0], "sample_disk": true, "sort": "Rz"}
