@@ -66,18 +66,15 @@ def process_data(path, dir_names, process_params={}):
 
         # process images (include zeroth image)
         targets_df = pd.read_csv(os.path.join(path, dir_name, 'targets.csv'))
-        sensor_image_0 = targets_df.sensor_image[0]
-        sensor_image_0 = sensor_image_0[:sensor_image_0.find('image_')] + 'image_0.png'
+        si_0 = targets_df.sensor_image.sort_values()[0][:-6] + '_0.png'
+        si_init_0 = targets_df.sensor_image.sort_values()[0][:-8] + '_init_0.png'
 
-        for sensor_image in [sensor_image_0, *list(targets_df.sensor_image)]:
-            try:
-                image = cv2.imread(os.path.join(image_dir, sensor_image))
-                proc_image = process_image(image, **process_params)
-                image_path, proc_sensor_image = os.path.split(sensor_image)
-                cv2.imwrite(os.path.join(proc_image_dir, proc_sensor_image), proc_image)
-                print(f'processed {dir}: {sensor_image}')
-            except:
-                print('missing ', sensor_image)
+        for sensor_image in [*list(targets_df.sensor_image), si_0, si_init_0]:
+            image = cv2.imread(os.path.join(image_dir, sensor_image))
+            proc_image = process_image(image, **process_params)
+            image_path, proc_sensor_image = os.path.split(sensor_image)
+            cv2.imwrite(os.path.join(proc_image_dir, proc_sensor_image), proc_image)
+            print(f'processed {dir}: {sensor_image}')
 
         # if targets have paths remove them
         if image_path:
