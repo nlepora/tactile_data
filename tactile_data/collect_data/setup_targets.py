@@ -25,7 +25,7 @@ def setup_targets(
 
     sample_disk = collect_params.get('sample_disk', False)
     sort = collect_params.get('sort', False)
-    
+
     object_pose_label_names = collect_params.get('object_pose_label_names', OBJECT_POSE_LABEL_NAMES)
     object_poses_dict = collect_params.get('object_poses', {'1': [0]*6})
 
@@ -105,7 +105,7 @@ def random_linear(num_samples, x_max):
 
 
 def sample_poses(llims, ulims, num_samples, sample_disk):
-    poses_mid = (np.array(ulims) + llims) / 2    
+    poses_mid = (np.array(ulims) + llims) / 2
     poses_max = ulims - poses_mid
 
     # default linear sampling on all components

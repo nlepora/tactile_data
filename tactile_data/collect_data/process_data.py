@@ -11,14 +11,14 @@ from tactile_image_processing.image_transforms import process_image
 BASE_DATA_PATH = 'temp'
 
 
-def split_data(path, dir_names, split=0.8):
-    
+def partition_dataset(path, dir_names, split=0.8, seed=1):
+
     if type(dir_names) is str:
         dir_names = [dir_names]
 
     if not split:
         return dir_names
-    
+
     all_dirs_out = []
     for dir_name in dir_names:
 
@@ -26,7 +26,7 @@ def split_data(path, dir_names, split=0.8):
         targets_df = pd.read_csv(os.path.join(path, dir_name, 'targets.csv'))
 
         # indices to split data
-        np.random.seed(1)  # make predictable needs to be different from collect
+        np.random.seed(seed)  # make deternministic, needs to be different from collect
         inds_true = np.random.choice([True, False], size=len(targets_df), p=[split, 1-split])
         inds = [inds_true, ~inds_true]
         dirs_out = ['_'.join([out, dir_name]) for out in ["train", "val"]]
@@ -45,7 +45,7 @@ def split_data(path, dir_names, split=0.8):
             targets_df.loc[ind, 'sensor_image'] = \
                 rf'../../{dir_name}/images/' + targets_df[ind].sensor_image.map(str)
             targets_df[ind].to_csv(os.path.join(dir_out, 'targets.csv'), index=False)
-    
+
         all_dirs_out = [*all_dirs_out, *dirs_out]
 
     return all_dirs_out
@@ -69,6 +69,7 @@ def process_data(path, dir_names, process_params={}):
         si_0 = targets_df.sensor_image.sort_values()[0][:-6] + '_0.png'
         si_init_0 = targets_df.sensor_image.sort_values()[0][:-8] + '_init_0.png'
 
+        cv2.namedWindow("proccessed_image")
         for sensor_image in [*list(targets_df.sensor_image), si_0, si_init_0]:
             try:
                 image = cv2.imread(os.path.join(image_dir, sensor_image))
@@ -76,8 +77,15 @@ def process_data(path, dir_names, process_params={}):
                 image_path, proc_sensor_image = os.path.split(sensor_image)
                 cv2.imwrite(os.path.join(proc_image_dir, proc_sensor_image), proc_image)
                 print(f'processed {dir}: {sensor_image}')
-            except:
+            except AttributeError:
                 print(f'missing {sensor_image}')
+                continue
+
+            # show image
+            cv2.imshow("proccessed_image", proc_image)
+            k = cv2.waitKey(1)
+            if k == 27:    # Esc key to stop
+                exit()
 
         # if targets have paths remove them
         if image_path:
@@ -102,9 +110,8 @@ if __name__ == "__main__":
 
     process_params = {
         'dims': (128, 128),
-        "bbox": (12, 12, 240, 240) 
+        "bbox": (12, 12, 240, 240)
     }
 
-    dir_names = split_data(BASE_DATA_PATH, dir_names)
+    # dir_names = partition_dataset(BASE_DATA_PATH, dir_names)
     process_data(BASE_DATA_PATH, dir_names, process_params)
-    
