@@ -11,7 +11,7 @@ from tactile_image_processing.image_transforms import process_image
 BASE_DATA_PATH = 'temp'
 
 
-def split_data(path, dir_names, split=0.8):
+def partition_dataset(path, dir_names, split=0.8, seed=1):
 
     if type(dir_names) is str:
         dir_names = [dir_names]
@@ -26,7 +26,7 @@ def split_data(path, dir_names, split=0.8):
         targets_df = pd.read_csv(os.path.join(path, dir_name, 'targets.csv'))
 
         # indices to split data
-        np.random.seed(1)  # make predictable needs to be different from collect
+        np.random.seed(seed)  # make deternministic, needs to be different from collect
         inds_true = np.random.choice([True, False], size=len(targets_df), p=[split, 1-split])
         inds = [inds_true, ~inds_true]
         dirs_out = ['_'.join([out, dir_name]) for out in ["train", "val"]]
@@ -113,5 +113,5 @@ if __name__ == "__main__":
         "bbox": (12, 12, 240, 240)
     }
 
-    # dir_names = split_data(BASE_DATA_PATH, dir_names)
+    # dir_names = partition_dataset(BASE_DATA_PATH, dir_names)
     process_data(BASE_DATA_PATH, dir_names, process_params)
