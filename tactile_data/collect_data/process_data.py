@@ -71,11 +71,14 @@ def process_data(path, dir_names, process_params={}):
 
         cv2.namedWindow("proccessed_image")
         for sensor_image in [*list(targets_df.sensor_image), si_0, si_init_0]:
-            image = cv2.imread(os.path.join(image_dir, sensor_image))
-            proc_image = process_image(image, **process_params)
-            image_path, proc_sensor_image = os.path.split(sensor_image)
-            cv2.imwrite(os.path.join(proc_image_dir, proc_sensor_image), proc_image)
-            print(f'processed {dir}: {sensor_image}')
+            try:
+                image = cv2.imread(os.path.join(image_dir, sensor_image))
+                proc_image = process_image(image, **process_params)
+                image_path, proc_sensor_image = os.path.split(sensor_image)
+                cv2.imwrite(os.path.join(proc_image_dir, proc_sensor_image), proc_image)
+                print(f'processed {dir}: {sensor_image}')
+            except:
+                print(f'missing {sensor_image}')
 
             # show image
             cv2.imshow("proccessed_image", proc_image)
