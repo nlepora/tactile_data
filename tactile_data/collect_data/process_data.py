@@ -12,13 +12,13 @@ BASE_DATA_PATH = 'temp'
 
 
 def split_data(path, dir_names, split=0.8):
-    
+
     if type(dir_names) is str:
         dir_names = [dir_names]
 
     if not split:
         return dir_names
-    
+
     all_dirs_out = []
     for dir_name in dir_names:
 
@@ -45,7 +45,7 @@ def split_data(path, dir_names, split=0.8):
             targets_df.loc[ind, 'sensor_image'] = \
                 rf'../../{dir_name}/images/' + targets_df[ind].sensor_image.map(str)
             targets_df[ind].to_csv(os.path.join(dir_out, 'targets.csv'), index=False)
-    
+
         all_dirs_out = [*all_dirs_out, *dirs_out]
 
     return all_dirs_out
@@ -69,12 +69,19 @@ def process_data(path, dir_names, process_params={}):
         si_0 = targets_df.sensor_image.sort_values()[0][:-6] + '_0.png'
         si_init_0 = targets_df.sensor_image.sort_values()[0][:-8] + '_init_0.png'
 
+        cv2.namedWindow("proccessed_image")
         for sensor_image in [*list(targets_df.sensor_image), si_0, si_init_0]:
             image = cv2.imread(os.path.join(image_dir, sensor_image))
             proc_image = process_image(image, **process_params)
             image_path, proc_sensor_image = os.path.split(sensor_image)
             cv2.imwrite(os.path.join(proc_image_dir, proc_sensor_image), proc_image)
             print(f'processed {dir}: {sensor_image}')
+
+            # show image
+            cv2.imshow("proccessed_image", proc_image)
+            k = cv2.waitKey(1)
+            if k == 27:    # Esc key to stop
+                exit()
 
         # if targets have paths remove them
         if image_path:
@@ -99,9 +106,8 @@ if __name__ == "__main__":
 
     process_params = {
         'dims': (128, 128),
-        "bbox": (12, 12, 240, 240) 
+        "bbox": (12, 12, 240, 240)
     }
 
     dir_names = split_data(BASE_DATA_PATH, dir_names)
     process_data(BASE_DATA_PATH, dir_names, process_params)
-    
