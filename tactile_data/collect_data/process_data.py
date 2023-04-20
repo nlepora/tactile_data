@@ -11,7 +11,7 @@ from tactile_image_processing.image_transforms import process_image
 BASE_DATA_PATH = 'temp'
 
 
-def partition_dataset(path, dir_names, split=0.8, seed=1):
+def split_data(path, dir_names, split=0.8, seed=1):
 
     if type(dir_names) is str:
         dir_names = [dir_names]
@@ -113,5 +113,5 @@ if __name__ == "__main__":
         "bbox": (12, 12, 240, 240)
     }
 
-    # dir_names = partition_dataset(BASE_DATA_PATH, dir_names)
+    # dir_names = split_data(BASE_DATA_PATH, dir_names)
     process_data(BASE_DATA_PATH, dir_names, process_params)
