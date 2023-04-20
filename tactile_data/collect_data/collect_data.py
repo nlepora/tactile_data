@@ -90,27 +90,27 @@ if __name__ == "__main__":
     }
 
     collect_params = {
-        "pose_llims": (-5, 0, 3, 0, 0, -180), 
-        "pose_ulims": ( 5, 0, 4, 0, 0,  180), 
+        "pose_llims": (-5, 0, 3, 0, 0, -180),
+        "pose_ulims": (5, 0, 4, 0, 0,  180),
         "sort": True,
         "object_poses": {
-            "edge":    (0, 0, 0, 0, 0, 0), 
+            "edge":    (0, 0, 0, 0, 0, 0),
             "surface": (-50, 0, 0, 0, 0, 0)
         }
     }
 
     env_params = {
-        "robot": "sim", 
-        "stim_name": "square", 
-        "work_frame": (650, 0, 50, -180, 0, 0), 
-        "tcp_pose":   (0, 0, -85, 0, 0, 0), 
+        "robot": "sim",
+        "stim_name": "square",
+        "work_frame": (650, 0, 50, -180, 0, 0),
+        "tcp_pose":   (0, 0, -85, 0, 0, 0),
         "stim_pose":  (600, 0, 12.5, 0, 0, 0),
         'show_tactile': True
     }
 
     sensor_params = {
-        "type": "standard_tactip", 
-        "image_size": (256, 256) 
+        "type": "standard_tactip",
+        "image_size": (256, 256)
     }
 
     for data_dir_name, num_poses in data_params.items():
@@ -143,4 +143,3 @@ if __name__ == "__main__":
             image_dir,
             collect_params
         )
-

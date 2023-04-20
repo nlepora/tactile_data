@@ -77,8 +77,9 @@ def process_data(path, dir_names, process_params={}):
                 image_path, proc_sensor_image = os.path.split(sensor_image)
                 cv2.imwrite(os.path.join(proc_image_dir, proc_sensor_image), proc_image)
                 print(f'processed {dir}: {sensor_image}')
-            except:
+            except AttributeError:
                 print(f'missing {sensor_image}')
+                continue
 
             # show image
             cv2.imshow("proccessed_image", proc_image)
@@ -112,5 +113,5 @@ if __name__ == "__main__":
         "bbox": (12, 12, 240, 240)
     }
 
-    dir_names = split_data(BASE_DATA_PATH, dir_names)
+    # dir_names = split_data(BASE_DATA_PATH, dir_names)
     process_data(BASE_DATA_PATH, dir_names, process_params)
