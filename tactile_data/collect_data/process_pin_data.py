@@ -44,6 +44,8 @@ def process_pin_data(path, dir_names, pin_extraction_params={}):
 
         # paths
         image_dir = os.path.join(path, dir_name, 'images')
+        if not os.path.exists(image_dir):
+            image_dir = os.path.join(path, dir_name, 'processed_images')
         keypoints_dir = os.path.join(path, dir_name, 'extracted_pins')
         os.makedirs(keypoints_dir, exist_ok=True)
 
@@ -56,7 +58,7 @@ def process_pin_data(path, dir_names, pin_extraction_params={}):
 
             image = cv2.imread(os.path.join(image_dir, sensor_image))
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-            image_path, image_name = os.path.split(sensor_image)
+            _, image_name = os.path.split(sensor_image)
 
             # extract keypoints from image
             extracted_keypoints = encoder.encode(detector.detect(image))
