@@ -10,7 +10,7 @@ from vsp.video_stream import CvVideoDisplay
 from vsp.detector import CvBlobDetector
 from vsp.detector import CvContourBlobDetector
 from vsp.detector import SklDoHBlobDetector
-from vsp.detector import SkeletonizePeakDetector
+# from vsp.detector import SkeletonizePeakDetector
 from vsp.encoder import KeypointEncoder
 from vsp.view import KeypointView
 
@@ -31,8 +31,8 @@ def process_pin_data(path, dir_names, pin_extraction_params={}):
         detector = CvContourBlobDetector(**pin_extraction_params['detector_kwargs'])
     elif pin_extraction_params['detector_type'] == 'doh':
         detector = SklDoHBlobDetector(**pin_extraction_params['detector_kwargs'])
-    elif pin_extraction_params['detector_type'] == 'peak':
-        detector = SkeletonizePeakDetector(**pin_extraction_params['detector_kwargs'])
+    # elif pin_extraction_params['detector_type'] == 'peak':
+    #     detector = SkeletonizePeakDetector(**pin_extraction_params['detector_kwargs'])
 
     encoder = KeypointEncoder()
     view = KeypointView(color=(0, 255, 0))
@@ -81,8 +81,10 @@ def process_pin_data(path, dir_names, pin_extraction_params={}):
             keypoints = keypoints[sorted_ind]
 
             # normalise the keypoints by the image size
-            keypoints[:, 0] = keypoints[:, 0] / pin_extraction_params['image_width']
-            keypoints[:, 1] = keypoints[:, 1] / pin_extraction_params['image_height']
+            keypoints[:, 0] = keypoints[:, 0] / image.shape[1]
+            keypoints[:, 1] = keypoints[:, 1] / image.shape[0]
+            # keypoints[:, 0] = keypoints[:, 0] / pin_extraction_params['image_width']
+            # keypoints[:, 1] = keypoints[:, 1] / pin_extraction_params['image_height']
 
             # save keypoints as npy file
             keypoints_filename = f"keypoints_{os.path.splitext(image_name)[0].split('_')[1]}.npy"

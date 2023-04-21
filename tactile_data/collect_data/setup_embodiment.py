@@ -20,7 +20,7 @@ def setup_embodiment(
     env_params['stim_path'] = os.path.join(os.path.dirname(__file__), 'stimuli')
 
     # setup simulated robot
-    if env_params['robot'][:3] == 'sim':
+    if 'sim' in env_params['robot']:
         embodiment = setup_pybullet_env(**env_params, **sensor_params)
         robot = SyncRobot(SimController(embodiment.arm))
         sensor = SimSensor(sensor_params, embodiment)

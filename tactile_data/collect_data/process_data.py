@@ -69,7 +69,7 @@ def process_data(path, dir_names, process_params={}):
         si_0 = targets_df.sensor_image.sort_values()[0][:-6] + '_0.png'
         si_init_0 = targets_df.sensor_image.sort_values()[0][:-8] + '_init_0.png'
 
-        cv2.namedWindow("proccessed_image")
+        cv2.namedWindow("processed_image")
         for sensor_image in [*list(targets_df.sensor_image), si_0, si_init_0]:
             try:
                 image = cv2.imread(os.path.join(image_dir, sensor_image))
@@ -82,7 +82,7 @@ def process_data(path, dir_names, process_params={}):
                 continue
 
             # show image
-            cv2.imshow("proccessed_image", proc_image)
+            cv2.imshow("processed_image", proc_image)
             k = cv2.waitKey(1)
             if k == 27:    # Esc key to stop
                 exit()
@@ -108,10 +108,10 @@ if __name__ == "__main__":
 
     dir_names = ["data_1", "data_2"]
 
-    process_params = {
+    process_image_params = {
         'dims': (128, 128),
         "bbox": (12, 12, 240, 240)
     }
 
     # dir_names = split_data(BASE_DATA_PATH, dir_names)
-    process_data(BASE_DATA_PATH, dir_names, process_params)
+    process_image_data(BASE_DATA_PATH, dir_names, process_image_params)
