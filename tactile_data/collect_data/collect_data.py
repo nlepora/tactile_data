@@ -117,7 +117,7 @@ if __name__ == "__main__":
 
         # setup save dir
         save_dir = os.path.join(BASE_DATA_PATH, data_dir_name)
-        image_dir = os.path.join(save_dir, "images")
+        image_dir = os.path.join(save_dir, "sensor_images")
         make_dir(save_dir)
         make_dir(image_dir)
         save_json_obj(sensor_params, os.path.join(save_dir, 'sensor_params'))
