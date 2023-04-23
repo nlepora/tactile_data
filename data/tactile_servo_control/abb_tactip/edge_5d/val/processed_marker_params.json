@@ -1,0 +1,1 @@
+{"num_markers": 127, "detector_type": "doh", "detector_kwargs": {"min_sigma": 5, "max_sigma": 6, "num_sigma": 5, "threshold": 0.015}, "source": 0, "exposure": -6, "gray": true, "bbox": [185, 95, 465, 375], "threshold": [11, -5], "circle_mask_radius": 140}
