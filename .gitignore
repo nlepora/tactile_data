@@ -13,6 +13,10 @@ pix2pix_128*/
 *_temp*
 *_temp*/
 temp/
+best_generator.pth
+best_discriminator.pth
+final_generator.pth
+final_discriminator.pth
 
 # C extensions
 *.so
