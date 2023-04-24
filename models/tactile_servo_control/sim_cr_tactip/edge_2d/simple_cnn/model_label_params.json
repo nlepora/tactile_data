@@ -1,0 +1,1 @@
+{"target_label_names": ["pose_x", "pose_Rz"], "target_weights": [1, 1], "label_names": ["pose_x", "pose_y", "pose_z", "pose_Rx", "pose_Ry", "pose_Rz"], "llims": [-5.0, 0.0, 3.0, 0.0, 0.0, -180.0], "ulims": [5.0, 0.0, 4.0, 0.0, 0.0, 180.0], "periodic_label_names": ["pose_Rz"]}

@@ -1,1 +1,0 @@
-{"target_label_names": ["x", "z", "Rx", "Ry", "Rz"], "target_weights": [1, 1, 1, 1, 1], "label_names": ["x", "y", "z", "Rx", "Ry", "Rz"], "llims": [-5.0, 0.0, 1.0, -25.0, -25.0, -45.0], "ulims": [5.0, 0.0, 5.0, 25.0, 25.0, 45.0], "num_iterations": 200, "show_plot": true, "show_slider": false, "model": "simple_cnn_90deg"}
