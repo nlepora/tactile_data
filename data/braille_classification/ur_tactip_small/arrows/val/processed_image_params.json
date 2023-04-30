@@ -1,1 +1,1 @@
-{"dims": [128, 128], "bbox": [125, 67, 485, 427], "thresh": [11, -30], "stdiz": false, "normlz": false, "circle_mask_radius": 165}
+{"type": "tactip_small", "source": 0, "exposure": -7, "gray": true, "dims": [128, 128], "bbox": [125, 67, 485, 427], "thresh": [11, -30], "stdiz": false, "normlz": false, "circle_mask_radius": 165}
