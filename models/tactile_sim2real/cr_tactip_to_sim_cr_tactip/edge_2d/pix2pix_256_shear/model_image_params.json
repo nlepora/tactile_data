@@ -1,1 +1,0 @@
-{"image_processing": {"dims": [258, 258], "bbox": null, "thresh": null, "stdiz": false, "normlz": true}, "augmentation": {"rshift": null, "rzoom": null, "brightlims": null, "noise_var": null}}
